@@ -3,89 +3,58 @@ package view.interfaceTool2.button;
 import view.interfaceTool2.AbstractComponent;
 
 import javax.swing.*;
-import java.awt.event.ActionListener;
 import java.util.Vector;
 
 /**
  * Created by xlo on 15-6-11.
  *
  */
-public abstract class AbstractButtons extends AbstractComponent {
+public abstract class AbstractButtons extends AbstractComponent implements ComponentWithButtons {
 
-    Vector<JButton> buttons;
+    Vector<AbstractButton> buttons;
 
-    public JButton addButton(String name, int width, ActionListener action){
-        JButton now = getNewButton(name);
-        now.setBounds(0, 0, width, 0);
-        now.addActionListener(action);
-        this.add(now);
-        buttons.addElement(now);
-        updateBounds();
-        return now;
+    AbstractButtons() {
+        buttons = new Vector<>();
     }
 
-    public JButton addButton(String name, ActionListener action){
-        JButton now = getNewButton(name);
-        now.setBounds(0, 0, 100, 0);
-        now.addActionListener(action);
-        this.add(now);
-        buttons.addElement(now);
-        updateBounds();
-        return now;
-    }
-
-    public JButton addButton(String name){
-        JButton now = getNewButton(name);
-        now.setBounds(0, 0, 100, 0);
-        this.add(now);
-        buttons.addElement(now);
-        updateBounds();
-        return now;
-    }
-
-    public JButton addButton(String name, int width){
-        JButton now = getNewButton(name);
-        now.setBounds(0, 0, width, 0);
-        this.add(now);
-        buttons.addElement(now);
-        updateBounds();
-        return now;
-    }
-
-    private JButton getNewButton(String name) {
-        JButton now=new JButton(name);
-        now.setName(name);
-        return now;
-    }
-
-    public JButton addBreak(int width){
-        JButton now=new JButton();
-        now.setBounds(0, 0, width, 0);
-        this.add(now);
-        now.setVisible(false);
-        buttons.addElement(now);
-        updateBounds();
-        return now;
-    }
-
-    public JButton addBreak(){
-        JButton now=new JButton();
-        now.setBounds(0, 0, 20, 0);
-        this.add(now);
-        now.setVisible(false);
-        buttons.addElement(now);
-        updateBounds();
-        return now;
-    }
-
-    public void removeButton(JButton button) {
+    @Override
+    public void removeButton(AbstractButton button) {
         this.remove(button);
         buttons.removeElement(button);
         updateBounds();
     }
 
     @Override
+    public void removeButton(String buttonName) {
+        this.buttons.stream().filter(now -> now.getName().equals(buttonName)).forEach(this::removeButton);
+    }
+
+    @Override
+    public void removeAllButtons() {
+        this.buttons.forEach(this::remove);
+        this.buttons.removeAllElements();
+        this.repaint();
+    }
+
+    @Override
+    protected void updateAllComponentSize() {
+        super.updateAllComponentSize();
+    }
+
+    @Override
     protected void updateVisitableBounds() {
-        this.visitablePanel.setBounds(this.getBounds());
+        this.visitablePanel.setBounds(0, 0, 0, 0);
+    }
+
+    protected AbstractButton getNewButton(String name) {
+        JButton now=new JButton(name);
+        now.setName(name);
+        now.setText(name);
+        return now;
+    }
+
+    protected void addButtonToThis(AbstractButton button) {
+        this.add(button);
+        buttons.addElement(button);
     }
 }

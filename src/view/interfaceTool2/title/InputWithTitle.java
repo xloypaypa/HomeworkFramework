@@ -8,7 +8,7 @@ import javax.swing.*;
  * Created by xlo on 15-6-9.
  *
  */
-public class InputWithTitle extends ComponentWithTitle {
+public class InputWithTitle extends ComponentWithTitle implements InputAbleComponent {
 
     protected JTextField textField;
 
@@ -31,14 +31,17 @@ public class InputWithTitle extends ComponentWithTitle {
         textField.setBounds(0, 20, this.getWidth(), 20);
     }
 
+    @Override
     public void setWords(String words) {
         this.textField.setText(words);
     }
 
+    @Override
     public String getWords() {
         return this.textField.getText();
     }
 
+    @Override
     public void clearWords() {
         this.setWords("");
     }

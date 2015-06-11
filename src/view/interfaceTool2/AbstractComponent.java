@@ -27,7 +27,7 @@ public abstract class AbstractComponent extends JPanel {
 
     public void addSubComponent (AbstractExtraComponent subComponent) {
         subComponent.setComponentCallBack(this);
-        subComponent.updateBoundsWithMainComponent();
+        subComponent.updateBoundsWithCallBackComponent();
         this.extraComponentSet.add(subComponent);
         this.visitablePanel.add(subComponent);
     }
@@ -94,7 +94,7 @@ public abstract class AbstractComponent extends JPanel {
     protected void updateAllComponentSize() {
         updateBounds();
         updateVisitableBounds();
-        this.extraComponentSet.forEach(AbstractExtraComponent::updateBoundsWithMainComponent);
+        this.extraComponentSet.forEach(AbstractExtraComponent::updateBoundsWithCallBackComponent);
     }
 
     protected abstract void updateBounds();

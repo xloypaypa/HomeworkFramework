@@ -27,7 +27,7 @@ public class Button extends AbstractExtraComponent {
     }
 
     @Override
-    public void updateBoundsWithMainComponent() {
+    public void updateBoundsWithCallBackComponent() {
         button.setBounds(this.getBounds());
     }
 

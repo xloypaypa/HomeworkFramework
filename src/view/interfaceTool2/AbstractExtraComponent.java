@@ -8,17 +8,17 @@ import javax.swing.*;
  */
 public abstract class AbstractExtraComponent extends JPanel {
 
-    protected AbstractComponent abstractComponentCallBack;
+    protected JComponent componentCallBack;
 
     public AbstractExtraComponent() {
         this.setLayout(null);
         this.setBackground(null);
     }
 
-    public void setComponentCallBack(AbstractComponent abstractComponent) {
-        this.abstractComponentCallBack = abstractComponent;
+    public void setComponentCallBack(JComponent component) {
+        this.componentCallBack = component;
     }
 
-    public abstract void updateBoundsWithMainComponent();
+    public abstract void updateBoundsWithCallBackComponent();
 
 }

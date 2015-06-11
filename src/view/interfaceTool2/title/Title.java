@@ -1,5 +1,6 @@
 package view.interfaceTool2.title;
 
+import view.interfaceTool2.AbstractComponent;
 import view.interfaceTool2.AbstractExtraComponent;
 
 import javax.swing.*;
@@ -28,8 +29,8 @@ public class Title extends AbstractExtraComponent implements TitleAbleComponent 
     }
 
     @Override
-    public void updateBoundsWithMainComponent() {
-        this.setBounds(0, 0, this.abstractComponentCallBack.getVisitableBounds().width, 20);
+    public void updateBoundsWithCallBackComponent() {
+        this.setBounds(0, 0, ((AbstractComponent) this.componentCallBack).getVisitableBounds().width, 20);
         label.setBounds(0, 0, this.getBounds().width, 20);
     }
 }
