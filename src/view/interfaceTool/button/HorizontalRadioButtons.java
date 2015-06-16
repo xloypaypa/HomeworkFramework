@@ -1,4 +1,4 @@
-package view.interfaceTool2.button;
+package view.interfaceTool.button;
 
 import javax.swing.*;
 import java.util.Enumeration;

@@ -1,4 +1,4 @@
-package view.interfaceTool2.title;
+package view.interfaceTool.title;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;
@@ -10,32 +10,37 @@ import java.util.Vector;
  */
 public class ChoiceBarWithTitle extends ComponentWithTitle {
 
-    protected JComboBox<String> comboBox;
+    protected JComboBox<Object> comboBox;
 
     public ChoiceBarWithTitle() {
         comboBox =new JComboBox<>();
         this.add(comboBox);
     }
 
-    public void addChoice(String item){
+    public void addChoice(Object item){
         comboBox.addItem(item);
         if (comboBox.getItemCount()==1){
             comboBox.setSelectedItem(item);
         }
     }
-    public void removeChoice(String item){
+    public void removeChoice(Object item){
         comboBox.removeItem(item);
         if (comboBox.getItemCount()==0){
             comboBox.setSelectedItem(null);
         }
     }
-    public void setChoices(Vector<String> a){
-        for (String now : a) {
+
+    public void removeAllChoice() {
+        comboBox.removeAllItems();
+    }
+
+    public void setChoices(Vector<Object> a){
+        for (Object now : a) {
             comboBox.addItem(now);
         }
         if (a.size()!=0) comboBox.setSelectedItem(a.get(0));
     }
-    public String getChoosenItem(){
+    public Object getChoosenItem(){
         try{
             return comboBox.getSelectedItem().toString();
         }catch(Exception e){
@@ -51,7 +56,7 @@ public class ChoiceBarWithTitle extends ComponentWithTitle {
         comboBox.setSelectedItem(item);
     }
 
-    public JComboBox<String> getComboBox() {
+    public JComboBox<Object> getComboBox() {
         return comboBox;
     }
 

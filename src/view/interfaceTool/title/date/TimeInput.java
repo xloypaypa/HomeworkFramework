@@ -1,12 +1,9 @@
-package view.interfaceTool2.title.date;
+package view.interfaceTool.title.date;
 
-import view.interfaceTool.Input;
-import view.interfaceTool2.AbstractComponent;
-import view.interfaceTool2.title.Title;
-import view.interfaceTool2.title.TitleAbleComponent;
+import view.interfaceTool.AbstractComponent;
+import view.interfaceTool.title.TitleAbleComponent;
 
 import javax.swing.*;
-import java.awt.*;
 import java.util.Vector;
 
 /**
@@ -36,7 +33,7 @@ public class TimeInput extends AbstractComponent implements TitleAbleComponent {
         for (DateItem now : items) {
             now.setBounds(0, 0, inputWidth, 20);
         }
-        items.forEach(view.interfaceTool2.title.date.DateItem::updateBoundsWithCallBackComponent);
+        items.forEach(view.interfaceTool.title.date.DateItem::updateBoundsWithCallBackComponent);
     }
 
     @Override

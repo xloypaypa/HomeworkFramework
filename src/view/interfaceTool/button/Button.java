@@ -1,6 +1,6 @@
-package view.interfaceTool2.button;
+package view.interfaceTool.button;
 
-import view.interfaceTool2.AbstractExtraComponent;
+import view.interfaceTool.AbstractExtraComponent;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;

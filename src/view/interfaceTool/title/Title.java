@@ -1,7 +1,7 @@
-package view.interfaceTool2.title;
+package view.interfaceTool.title;
 
-import view.interfaceTool2.AbstractComponent;
-import view.interfaceTool2.AbstractExtraComponent;
+import view.interfaceTool.AbstractComponent;
+import view.interfaceTool.AbstractExtraComponent;
 
 import javax.swing.*;
 

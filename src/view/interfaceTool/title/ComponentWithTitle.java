@@ -1,6 +1,6 @@
-package view.interfaceTool2.title;
+package view.interfaceTool.title;
 
-import view.interfaceTool2.AbstractComponent;
+import view.interfaceTool.AbstractComponent;
 
 /**
  * Created by xlo on 15-6-10.

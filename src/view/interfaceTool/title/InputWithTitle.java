@@ -1,6 +1,4 @@
-package view.interfaceTool2.title;
-
-import view.interfaceTool2.AbstractComponent;
+package view.interfaceTool.title;
 
 import javax.swing.*;
 

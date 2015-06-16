@@ -1,6 +1,6 @@
-package view.interfaceTool2.title;
+package view.interfaceTool.title;
 
-import view.interfaceTool2.button.HorizontalRadioButtons;
+import view.interfaceTool.button.HorizontalRadioButtons;
 
 import javax.swing.*;
 

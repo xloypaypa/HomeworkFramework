@@ -1,9 +1,9 @@
-package view.interfaceTool2.title.date;
+package view.interfaceTool.title.date;
 
-import view.interfaceTool2.AbstractExtraComponent;
-import view.interfaceTool2.title.InputAbleComponent;
-import view.interfaceTool2.title.InputWithLeftTitle;
-import view.interfaceTool2.title.TitleAbleComponent;
+import view.interfaceTool.AbstractExtraComponent;
+import view.interfaceTool.title.InputAbleComponent;
+import view.interfaceTool.title.InputWithLeftTitle;
+import view.interfaceTool.title.TitleAbleComponent;
 
 /**
  * Created by xlo on 15-6-11.

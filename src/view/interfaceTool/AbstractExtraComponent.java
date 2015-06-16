@@ -1,4 +1,4 @@
-package view.interfaceTool2;
+package view.interfaceTool;
 
 import javax.swing.*;
 
