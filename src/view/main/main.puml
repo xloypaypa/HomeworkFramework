@@ -1,0 +1,78 @@
+@startuml
+
+interface StringNameClass {
+    + boolean isThisName(String name)
+    + String getClassName()
+}
+
+interface UIWindow extends StringNameClass {
+    --window operation--
+    + void getInstance(String windowName)
+    + void createWindow()
+    + void repaint()
+    + void repaintAllPage()
+    --dialog operation--
+    + void addDialog(UIDialog dialog)
+    + void removeDialog(UIDialog dialog)
+    + void removeDialog(String name)
+    + void removeAllDialog()
+    + void showDialog(String name)
+    --page operation--
+    + void addPage(UIPage page)
+    + void removePage(UIPage page)
+    + void removePage(String name)
+    + void removeAllPage()
+    + void showPage(String name)
+}
+
+interface UIDialog extends StringNameClass {
+	+ void getInstance()
+	+ void show()
+	+ void dispose()
+}
+
+interface UIPage extends StringNameClass {
+	+ void getInstance()
+	+ void repaint()
+	+ JComponent getPage()
+}
+
+abstract class NormalWindow implements UIWindow {
+    # window: JFrame
+    # dialog: Map<String, UIDialog>
+    # page: Map<String, UIPage>
+    - nowPage: UIPage
+    
+    --window operation--
+    + void getInstance(String windowName)
+    + void createWindow()
+    + void repaint()
+    + void repaintAllPage()
+    --dialog operation--
+    + void addDialog(UIDialog dialog)
+    + void removeDialog(UIDialog dialog)
+    + void removeDialog(String name)
+    + void removeAllDialog()
+    + void showDialog(String name)
+    --page operation--
+    + void addPage(UIPage page)
+    + void removePage(UIPage page)
+    + void removePage(String name)
+    + void removeAllPage()
+    + void showPage(String name))
+}
+
+class WindowManager {
+    # {static} windows: Map<String, UIWindow>
+
+    + {static} void addWindow(UIWindow window)
+    + {static} void removeWindow(String name)
+    + {static} void removeWindow(UIWindow window)
+    + {static} void createWindow(String className, String windowName)
+}
+
+NormalWindow <--o UIDialog
+NormalWindow <--o UIPage
+WindowManager <--* NormalWindow
+
+@enduml

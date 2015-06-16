@@ -19,8 +19,8 @@ public class NormalEvent {
 	}
 	
 	public boolean runEvent() {
-		for (int i=0;i<steeps.size();i++){
-			if (!steeps.get(i).action()) {
+		for (AbstractSteep steep : steeps) {
+			if (!steep.action()) {
 				return false;
 			}
 		}

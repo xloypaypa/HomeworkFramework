@@ -1,10 +1,11 @@
 package view.main;
 
-public interface UIDialog {
+import tool.StringNameClass;
+
+public interface UIDialog extends StringNameClass {
 	
 	void getInstance();
 	void show();
 	void dispose();
-	boolean isThisDialog(String name);
 
 }

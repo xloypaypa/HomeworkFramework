@@ -13,7 +13,7 @@ public abstract class AbstractButtons extends AbstractComponent implements Compo
 
     Vector<AbstractButton> buttons;
 
-    AbstractButtons() {
+    public AbstractButtons() {
         buttons = new Vector<>();
     }
 

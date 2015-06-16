@@ -1,0 +1,193 @@
+@startuml
+
+abstract class AbstractComponent extends JPanel {
+    # extraComponentSet:Set<AbstractExtraComponent>
+    # visitablePanel:JPanel
+    __
+    + AbstractComponent()
+    + void addSubComponent (AbstractExtraComponent subComponent)
+    + void removeSubComponent (AbstractExtraComponent subComponent)
+    + void removeAllSubComponent()
+    + AbstractExtraComponent getSubComponent(String componentName)
+    + void setVisitableBounds(Rectangle r)
+    + void setVisitableBounds(int x, int y, int width, int height)
+    + Rectangle getVisitableBounds()
+    --override panel method--
+    + void setSize(Dimension d)
+    + void setSize(int width, int height)
+    + void setBounds(Rectangle r)
+    + void setBounds(int x, int y, int width, int height)
+    --update components' size--
+    # void updateAllComponentSize()
+    --abstract method--
+    # {abstract} void updateBounds();
+    # {abstract} void updateVisitableBounds();
+}
+
+abstract class AbstractExtraComponent extends JPanel {
+    # componentCallBack: JComponent;
+    __
+    + AbstractExtraComponent()
+    + void setComponentCallBack(JComponent component)
+    + {abstract} void updateBoundsWithCallBackComponent()
+}
+
+package title {
+    interface TitleAbleComponent {
+        +void setTitle(String title)
+        +String getTitle()
+    }
+
+    interface InputAbleComponent {
+        +void setWords(String words)
+        +String getWords()
+        +void clearWords()
+    }
+
+    abstract class ComponentWithTitle extends AbstractComponent implements TitleAbleComponent {
+        - title:Title
+
+        + ComponentWithTitle()
+        + void setTitle(String title)
+        + String getTitle()
+        # void updateVisitableBounds()
+    }
+
+    class Title extends AbstractExtraComponent implements TitleAbleComponent {
+        - label:JLabel
+
+        +Title()
+        +void setTitle(String title)
+        +String getTitle()
+        +void updateBoundsWithCallBackComponent()
+    }
+
+    class InputWithTitle extends ComponentWithTitle implements InputAbleComponent {
+        # JTextField textField;
+        __
+        --instance--
+        + InputWithTitle()
+        # void buildTextField()
+        --method--
+        + void setName(String name)
+        + void setWords(String words)
+        + String getWords()
+        + void clearWords()
+        + JTextField getTextField()
+        + void setFocus()
+        # void updateBounds()
+    }
+
+    class PasswordWithTitle extends InputWithTitle {
+        # void buildTextField()
+    }
+
+    class InputWithLeftTitle extends InputWithTitle {
+        - titleWidth:int
+
+        + InputWithLeftTitle()
+        + void setTitleWidth(int width)
+        + int getTitleWidth()
+        # void updateVisitableBounds()
+        # void updateBounds()
+    }
+
+    class ChoiceBarWithTitle extends ComponentWithTitle {
+        # comboBox:JComboBox<Object>;
+        __
+        --instance--
+        + ChoiceBarWithTitle()
+        --data operation--
+        + void addChoice(Object item)
+        + void removeChoice(Object item)
+        + void removeAllChoice()
+        + void setChoices(Vector<Object> a)
+        --other operation--
+        + Object getChoosenItem()
+        + void addSelectAction(ActionListener listener)
+        + void setSelectedItem(String item)
+        + JComboBox<Object> getComboBox()
+        # void updateBounds()
+    }
+
+    class ChoiceButtonWithTitle extends ComponentWithTitle {
+        -horizontalRadioButtons:HorizontalRadioButtons;
+
+        + ChoiceButtonWithTitle()
+        + JRadioButton addChoose(String name,int width)
+        + void removeChoose(String name)
+        + void removeChoose(JRadioButton b)
+        + JRadioButton getChoosen()
+        # void updateBounds()
+    }
+}
+
+package button {
+    interface ComponentWithButtons {
+        + AbstractButton addButton(String name, int width, ActionListener action)
+        + AbstractButton addButton(String name, ActionListener action)
+        + AbstractButton addButton(String name)
+        + AbstractButton addButton(String name, int width)
+        + AbstractButton addBreak(int width)
+        + AbstractButton addBreak()
+        + void removeButton(AbstractButton button)
+        + void removeButton(String buttonName)
+        + void removeAllButtons()
+    }
+
+    abstract class AbstractButtons extends AbstractComponent implements ComponentWithButtons {
+        - buttons:Vector<AbstractButton>
+
+        + AbstractButtons()
+        + void removeButton(AbstractButton button)
+        + void removeButton(String buttonName)
+        + void removeAllButtons()
+        # void updateAllComponentSize()
+        # void updateVisitableBounds()
+        # AbstractButton getNewButton(String name)
+        # void addButtonToThis(AbstractButton button)
+    }
+
+    class Button extends AbstractExtraComponent {
+        - button:JButton;
+
+        + Button()
+        + void addActionListener(ActionListener actionListener)
+        + void removeActionListener(ActionListener actionListener)
+        + void updateBoundsWithCallBackComponent()
+    }
+
+    class HorizontalButtons extends AbstractButtons {
+        + AbstractButton addButton(String name, int width, ActionListener action)
+        + AbstractButton addButton(String name, ActionListener action)
+        + AbstractButton addButton(String name)
+        + AbstractButton addButton(String name, int width)
+        + AbstractButton addBreak(int width)
+        + AbstractButton addBreak()
+        # void updateBounds()
+    }
+
+    class HorizontalRadioButtons extends HorizontalButtons {
+        - group:ButtonGroup
+
+        + HorizontalRadioButtons()
+        + void removeButton(AbstractButton button)
+        + void removeAllButtons()
+        + JRadioButton getChoosen()
+        # AbstractButton getNewButton(String name)
+        # void addButtonToThis(AbstractButton button)
+    }
+
+    class VerticalButtons extends AbstractButtons {
+        + AbstractButton addButton(String name, int height, ActionListener action)
+        + AbstractButton addButton(String name, ActionListener action)
+        + AbstractButton addButton(String name)
+        + AbstractButton addButton(String name, int height)
+        + AbstractButton addBreak(int height)
+        + AbstractButton addBreak()
+        # void updateBounds()
+    }
+}
+
+ChoiceButtonWithTitle <--* HorizontalRadioButtons
+@enduml
