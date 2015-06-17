@@ -4,18 +4,18 @@ import model.database.io.IOManager;
 
 public abstract class AbstractDatabase {
 	
-	protected String collectionName;
-	
-	public void setCollectionName(String collectionName) {
-		this.collectionName = collectionName;
+	protected String path;
+
+	public void setPath(String path) {
+		this.path = path;
 	}
-	
-	public String getCollectionName() {
-		return collectionName;
+
+	public String getPath() {
+		return path;
 	}
-	
+
 	public void clean() {
-		IOManager.clean(collectionName);
+		IOManager.clean(path);
 	}
 
 }

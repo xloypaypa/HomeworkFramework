@@ -1,0 +1,79 @@
+@startuml
+
+interface DataOperator {
+	+ boolean isThisDataBase(String keeper)
+	+ String getDataBaseName()
+}
+
+interface DataBase extends DataOperator {
+	+ void addItem(IOType type)
+	+ boolean itemExist(IOType type)
+	+ void removeItem(IOType type)
+	+ void updateItem(IOType past, IOType now)
+	+ IOType getNewType()
+	+ Vector <IOType> getAllItem()
+}
+
+interface IDDatabase extends DataBase {
+	+ void removeItem(String id)
+	+ void updateItem(String id, IOType type)
+	+ boolean ItemExist(String id)
+	+ IOType getItem(String id)
+	+ Vector<String> getAllID()
+}
+
+abstract class AbstractDatabase {
+	# path:String
+
+	+ void setPath(String path)
+	+ String getPath()
+	+ void clean()
+}
+
+class DBOperatorManager extends OperatorManager {
+	+ {static} DataBase getDataBase(String name)
+}
+
+class OperatorManager {
+	# {static} operators:Vector<DataOperator>
+
+	+ {static} void addOperator(DataOperator operator)
+	+ {static} DataOperator getOperator(String name)
+}
+
+package io {
+    interface IOInterface {
+    	+ void loadDB(String dbName)
+    	+ Vector<String> getMessage(String collectionName)
+    	+ Vector<String> findMessage(String collectionName, String item)
+    	+ void addMessage(String collectionName, String item)
+    	+ void removeMessage(String collectionName, String item)
+    	+ void updateMessage(String collectionName, String now, String item)
+    	+ void clean(String collectionName)
+    }
+
+    interface IOType {
+        + String format()
+        + void solveMessage(String message)
+    }
+
+    class IOManager {
+    	+ {static} io:IOInterface
+
+    	+ {static} void loadDB(String dbName)
+    	+ {static} Vector<String> getMessage(String collectionName)
+    	+ {static} Vector<String> findMessage(String collectionName, String item)
+    	+ {static} void addMessage(String collectionName, String item)
+    	+ {static} void removeMessage(String collectionName, String item)
+    	+ {static} void updateMessage(String collectionName, String now, String item)
+    	+ {static} void clean(String collectionName)
+    }
+
+    IOManager <--* IOInterface
+    IOInterface <--o IOType
+}
+
+OperatorManager <--* DataBase
+AbstractDatabase <--o IOManager
+
+@enduml
