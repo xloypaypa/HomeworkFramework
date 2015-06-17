@@ -1,0 +1,113 @@
+@startuml
+
+abstract class AbstractSteep {
+	# eventCallBack:NormalEvent
+
+	+ boolean action()
+	+ void setEventCallBack(NormalEvent eventCallBack)
+	+ NormalEvent getEventCallBack()
+	# {abstract} boolean checkNeedData();
+	# {abstract} boolean steep();
+	# {abstract} void putData();
+}
+
+abstract class AbstractAction extends AbstractSteep {
+    # boolean steep()
+    # {abstract} void run()
+}
+
+class NormalEvent {
+	# steeps:Vector<AbstractSteep>
+	# values:Map<String, Object>
+	__
+	--event operation--
+	+ NormalEvent()
+	+ void addSteep(AbstractSteep steep)
+	+ void cleanSteep()
+	+ boolean runEvent()
+	--event data--
+	+ void putValue(String key, Object value)
+	+ Object getValue(String key)
+	+ Class getValueClass(String key)
+	+ boolean containsKey(String key)
+	+ void cleanValues()
+}
+
+class ValueChecker {
+    # eventCallBack:NormalEvent
+    # checkItems:Vector<Pair<String, Class>>
+
+    + ValueChecker()
+    + void setEventCallBack(NormalEvent eventCallBack)
+    + NormalEvent getEventCallBack()
+    + void addItem(Pair<String, Class> item)
+    + void cleanItem()
+    + boolean checkAllItem()
+}
+
+package action {
+	class AddItemAction {
+		- db:String
+		- item:IOType
+
+		# void run()
+		# boolean checkNeedData()
+		# void putData()
+	}
+
+	class RemoveIDAction {
+		- db:String
+		- id:String
+
+		# void run()
+		# boolean checkNeedData()
+		# void putData()
+	}
+
+	class RemoveItemAction {
+		- db:String
+		- item:IOType
+
+		# void run()
+		# boolean checkNeedData()
+		# void putData()
+	}
+
+	class UpdateIDAction {
+		- db:String
+		-id:String
+		- item:IOType
+
+		# void run()
+		# boolean checkNeedData()
+		# void putData()
+	}
+
+	class UpdateItemAction {
+		- db:String
+		- past:IOType
+		- item:IOType
+
+		# void run()
+		# boolean checkNeedData()
+		# void putData()
+	}
+}
+
+class DataFormatSteep extends AbstractSteep {
+    # String key;
+    # Format format;
+    - String value;
+    - Object ans;
+
+    + void setFormat(String key, Format format)
+    # boolean checkNeedData()
+    # boolean steep()
+    # void putData()
+}
+
+AbstractAction <|-- action
+NormalEvent <--* AbstractSteep
+action <--o ValueChecker
+
+@enduml

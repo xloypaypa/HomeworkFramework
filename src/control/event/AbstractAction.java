@@ -1,15 +1,13 @@
 package control.event;
 
-import control.event.AbstractSteep;
-
-public abstract class AbstractAction implements AbstractSteep {
+public abstract class AbstractAction extends AbstractSteep {
 
 	@Override
-	public boolean action() {
+	protected boolean steep() {
 		run();
 		return true;
 	}
-	
+
 	protected abstract void run();
 
 }

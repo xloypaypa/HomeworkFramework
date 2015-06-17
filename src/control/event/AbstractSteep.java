@@ -1,7 +1,26 @@
 package control.event;
 
-public interface AbstractSteep {
-	
-	boolean action();
+public abstract class AbstractSteep {
+
+	protected NormalEvent eventCallBack;
+
+	public boolean action() {
+		if (!this.checkNeedData()) return false;
+		if (!this.steep()) return false;
+		this.putData();
+		return true;
+	}
+
+	public void setEventCallBack(NormalEvent eventCallBack) {
+		this.eventCallBack = eventCallBack;
+	}
+
+	public NormalEvent getEventCallBack() {
+		return eventCallBack;
+	}
+
+	protected abstract boolean checkNeedData();
+	protected abstract boolean steep();
+	protected abstract void putData();
 
 }
