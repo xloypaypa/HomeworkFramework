@@ -26,9 +26,11 @@ public class WindowManager {
     }
 
     public static void createWindow(String className, String windowName) {
-        UIWindow window = windows.get(className);
-        window.getInstance(windowName);
-        window.createWindow();
+        if (windows.containsKey(className)) {
+            UIWindow window = windows.get(className);
+            window.getInstance(windowName);
+            window.createWindow();
+        }
     }
 
 }
