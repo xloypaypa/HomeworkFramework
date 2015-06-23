@@ -42,6 +42,17 @@ public class HorizontalRadioButtons extends HorizontalButtons {
         group.add(button);
     }
 
+    public void setChoosen(String name) {
+        for (AbstractButton now : this.buttons) {
+            if (now.getName().equals(name)) {
+                now.setSelected(true);
+            } else {
+                now.setSelected(false);
+            }
+        }
+
+    }
+
     public JRadioButton getChoosen(){
         Enumeration<AbstractButton> choose=group.getElements();
         while (choose.hasMoreElements()){

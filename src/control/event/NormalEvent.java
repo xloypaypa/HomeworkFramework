@@ -15,6 +15,7 @@ public class NormalEvent {
 	}
 	
 	public void addSteep(AbstractSteep steep) {
+		steep.setEventCallBack(this);
 		steeps.addElement(steep);
 	}
 	

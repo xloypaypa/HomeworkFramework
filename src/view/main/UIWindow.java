@@ -10,6 +10,7 @@ public interface UIWindow extends StringNameClass {
 
     void getInstance(String windowName);
     void createWindow();
+    void dispose();
     void repaint();
     void repaintAllPage();
 

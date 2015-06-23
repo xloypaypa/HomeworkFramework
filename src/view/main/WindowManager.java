@@ -25,11 +25,17 @@ public class WindowManager {
         removeWindow(window.getClassName());
     }
 
-    public static void createWindow(String className, String windowName) {
+    public static void createWindow(String className) {
         if (windows.containsKey(className)) {
             UIWindow window = windows.get(className);
-            window.getInstance(windowName);
             window.createWindow();
+        }
+    }
+
+    public static void dispose(String className) {
+        if (windows.containsKey(className)) {
+            UIWindow window = windows.get(className);
+            window.dispose();
         }
     }
 
