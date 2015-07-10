@@ -7,7 +7,7 @@ import javafx.util.Pair;
 import model.database.DBOperatorManager;
 import model.database.io.IOType;
 
-public class RemoveItemAction extends AbstractAction {
+public abstract class RemoveItemAction extends AbstractAction {
 
 	String db;
 	IOType item;

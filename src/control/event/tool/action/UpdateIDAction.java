@@ -7,7 +7,7 @@ import model.database.DBOperatorManager;
 import model.database.IDDatabase;
 import model.database.io.IOType;
 
-public class UpdateIDAction extends AbstractAction {
+public abstract class UpdateIDAction extends AbstractAction {
 
     String db, id;
     IOType item;

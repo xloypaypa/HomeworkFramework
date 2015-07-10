@@ -10,7 +10,7 @@ import java.text.ParseException;
  * Created by xlo on 15-6-17.
  *
  */
-public class DataFormatSteep extends AbstractSteep {
+public abstract class DataFormatSteep extends AbstractSteep {
 
     protected String key;
     protected Format format;

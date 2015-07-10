@@ -22,5 +22,6 @@ public abstract class AbstractSteep {
 	protected abstract boolean checkNeedData();
 	protected abstract boolean steep();
 	protected abstract void putData();
+	protected abstract String getNextSteep();
 
 }

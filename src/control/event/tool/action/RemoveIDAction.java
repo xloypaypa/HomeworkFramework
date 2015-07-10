@@ -6,7 +6,7 @@ import javafx.util.Pair;
 import model.database.DBOperatorManager;
 import model.database.IDDatabase;
 
-public class RemoveIDAction extends AbstractAction {
+public abstract class RemoveIDAction extends AbstractAction {
 
     String db, id;
 

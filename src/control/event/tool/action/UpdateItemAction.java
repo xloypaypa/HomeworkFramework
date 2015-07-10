@@ -6,7 +6,7 @@ import javafx.util.Pair;
 import model.database.DBOperatorManager;
 import model.database.io.IOType;
 
-public class UpdateItemAction extends AbstractAction {
+public abstract class UpdateItemAction extends AbstractAction {
 	
 	String db;
 	IOType past, item;
