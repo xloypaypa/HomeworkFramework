@@ -31,7 +31,11 @@ There are some important class or interface.
       * It's should be getInstance before createWindow, addDialog and addPage.
       * You can call showPage(or showDialog) to show a page(or a dialog).
     * UIPage and UIDialog. They a page and dialog's iterface. Any page and dialog should implement they. And add to UI.
-    
+
+## TODO
+   * autolayout.
+
+
 ## Why use this framework
    * If you are worry about a db homework and you don't want build a web app and you don't want your homework not too simple and you don't want it's too hard. You could try this.
    * As you see. It's don't have too many class or interface have to learn.
