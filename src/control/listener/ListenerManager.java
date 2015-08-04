@@ -39,6 +39,11 @@ public class ListenerManager {
 		defaultListener.setErrorFlag(true);
 		defaultListener.setMessage(msg);
 	}
+
+	public static void setInfoMessage(String message) {
+		defaultListener.setErrorFlag(false);
+		defaultListener.setMessage(message);
+	}
 	
 	public static void setOKMessage(){
 		defaultListener.setErrorFlag(false);
