@@ -23,7 +23,7 @@ public class FileChooseWithTitle extends InputWithTitle {
                 }
             }
         });
-        this.chooseAction.setText("..");
+        this.chooseAction.setText("src/main");
         this.add(this.chooseAction);
     }
 
