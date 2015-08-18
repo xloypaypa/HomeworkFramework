@@ -42,6 +42,7 @@ public abstract class AbstractAction implements Action {
 
         } finally {
             this.isFinished = true;
+            loadNextEvents();
             this.startWhenFinished();
             if (this.isDone) {
                 this.startWhenDone();
@@ -62,5 +63,7 @@ public abstract class AbstractAction implements Action {
     public void addFinishEvent(Action action) {
         this.finishedAction.add(action);
     }
+
+    protected abstract void loadNextEvents();
 
 }
